@@ -1,5 +1,6 @@
 package com.studentapp.application.dto;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class StudentDTO {
+public class StudentSaveDTO {
 
 
     private int studentid;
@@ -15,6 +16,5 @@ public class StudentDTO {
     private String address;
     private int phone;
     private boolean active;
-
 
 }
