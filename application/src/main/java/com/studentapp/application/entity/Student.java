@@ -22,7 +22,7 @@ public class Student {
     private int  mobile;
 
     @Column(name="active",columnDefinition = "TINYINT default 1")
-    private boolean  active;
+    private boolean active;
 
 
     public Student(int studentid, String studentname, String address, int mobile, boolean active) {

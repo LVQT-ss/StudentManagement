@@ -9,12 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 public class StudentDTO {
 
-
     private int studentid;
     private String studentname;
     private String address;
-    private int phone;
-    private boolean active;
-
+    private int  mobile;
+    private boolean  active;
 
 }
