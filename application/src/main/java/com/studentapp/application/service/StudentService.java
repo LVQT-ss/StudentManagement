@@ -9,4 +9,8 @@ import java.util.List;
 public interface StudentService {
     String addStudent(StudentSaveDTO studentSaveDTO);
     List<StudentDTO> getStudent();
+
+    String updateStudent(StudentDTO studentDTO);
+
+
 }

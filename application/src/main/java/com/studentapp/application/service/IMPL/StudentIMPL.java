@@ -35,8 +35,10 @@ public class StudentIMPL implements StudentService {
 
     @Override
     public List<StudentDTO> getStudent(){
+
         List<Student> getStudents = studentRepo.findAll();
         List<StudentDTO> studentDTOList = new ArrayList<>();
+
         for (Student s :getStudents) {
             StudentDTO studentDTO = new StudentDTO(
                     s.getStudentid(),
@@ -50,5 +52,24 @@ public class StudentIMPL implements StudentService {
         return studentDTOList;
     }
 
+    @Override
+    public String updateStudent(StudentDTO studentDTO) {
+
+        if(studentRepo.existsById(studentDTO.getStudentid())) {
+
+            Student student = studentRepo.getById(studentDTO.getStudentid());
+
+            student.setStudentname(studentDTO.getStudentname());
+            student.setAddress(studentDTO.getAddress());
+            student.setMobile(studentDTO.getMobile());
+            student.setActive(studentDTO.isActive());
+            studentRepo.save(student);
+        }
+        else
+        {
+            System.out.println("Student ID no Exist");
+        }
+        return null;
+    }
 
 }

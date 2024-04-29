@@ -30,4 +30,12 @@ public class StudentController {
         return allStudents;
     }
 
+    @PutMapping(path = "/update")
+    public String updateStudent(@RequestBody StudentDTO studentDTO){
+
+        String id = studentService.updateStudent(studentDTO);
+        return id;
+    }
+
+
 }
