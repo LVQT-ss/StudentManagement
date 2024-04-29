@@ -73,16 +73,15 @@ public class StudentIMPL implements StudentService {
     }
 
 
-
     @Override
     public boolean deleteStudent(int id) {
         if(studentRepo.existsById(id)) {
             studentRepo.deleteById(id);
-        }
-        else{
+            return true;
+        } else {
             System.out.println("Student ID no Exist");
+            return false;
         }
-        return false;
     }
 
 }

@@ -4,6 +4,8 @@ import com.studentapp.application.dto.StudentDTO;
 import com.studentapp.application.dto.StudentSaveDTO;
 import com.studentapp.application.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,12 +38,15 @@ public class StudentController {
         String id = studentService.updateStudent(studentDTO);
         return id;
     }
-
     @DeleteMapping(path = "/delete/{id}")
-    public String deleteStudent(@PathVariable(value = "id") int id){
-        boolean deleteStudent = studentService.deleteStudent(id);
-        return "deleted";
-    }
+    public ResponseEntity<String> deleteStudent(@PathVariable(value = "id") int id) {
+        boolean isDeleted = studentService.deleteStudent(id);
 
+        if (isDeleted) {
+            return new ResponseEntity<>("Student deleted successfully.", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Student ID does not exist.", HttpStatus.NOT_FOUND);
+        }
+    }
 
 }
